@@ -254,6 +254,23 @@ def add_encoding_arguments(
         help=po_encoding_help,
     )
 
+def add_md_newline_arguments(
+    parser
+):
+    """Add ``--md-newline`` arguments to an argument parser.
+
+    Args:
+        parser (:py:class:`argparse.ArgumentParser`): Arguments parser to
+            extend.
+        md_newline_help (str): Help text for the ``--md-newline`` argument.
+    """
+    parser.add_argument(
+        f'--md-newline',
+        dest=f'md_newline',
+        default=None,
+        help=f'End of line in md file.',
+        metavar='NEWLINE',
+    )
 
 def add_wrapwidth_argument(
     parser,

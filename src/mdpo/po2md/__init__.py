@@ -948,6 +948,7 @@ class Po2Md:
         filepath_or_content,
         save=None,
         md_encoding='utf-8',
+        md_newline=None, # None means use system default
     ):
         self.content = to_file_content_if_is_file(
             filepath_or_content,
@@ -987,7 +988,7 @@ class Po2Md:
                     encoding=md_encoding,
                 )
             else:
-                with open(save, 'w', encoding=md_encoding) as f:
+                with open(save, 'w', encoding=md_encoding,newline=md_newline) as f:
                     f.write(self.output)
         return self.output
 
@@ -998,6 +999,7 @@ def pofile_to_markdown(
     ignore=frozenset(),
     save=None,
     md_encoding='utf-8',
+    md_newline=None,
     po_encoding=None,
     command_aliases=None,
     wrapwidth=80,
@@ -1079,4 +1081,5 @@ def pofile_to_markdown(
         filepath_or_content,
         save=save,
         md_encoding=md_encoding,
+        md_newline=md_newline
     )

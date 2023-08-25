@@ -20,6 +20,7 @@ from mdpo.cli import (
     cli_codespan,
     parse_command_aliases_cli_arguments,
     parse_event_argument,
+    add_md_newline_arguments,
 )
 from mdpo.io import environ
 from mdpo.po2md import Po2Md
@@ -68,6 +69,7 @@ def build_parser():
     add_wrapwidth_argument(parser, markup='md', default='80')
     add_encoding_arguments(parser)
     add_command_alias_argument(parser)
+    add_md_newline_arguments(parser)
     add_event_argument(parser)
     add_debug_option(parser)
     add_check_option(parser)
@@ -123,6 +125,7 @@ def run(args=frozenset()):
             opts.filepath_or_content,
             save=opts.save,
             md_encoding=opts.md_encoding,
+            md_newline=opts.md_newline,
         )
 
         if not opts.quiet and not opts.save:
